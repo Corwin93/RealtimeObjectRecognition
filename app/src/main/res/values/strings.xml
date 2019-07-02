@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">RealtimeObjectRecognition</string>
+    <string name="camera_rationale">Camera permission is necessary for object recognition.</string>
+    <string name="camera_never_ask_again_warning">You denied camera permission.</string>
+    <string name="camera_permission_settings_instruction">Open Permissions and grant the Camera permission</string>
 </resources>
