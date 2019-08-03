@@ -1,16 +1,15 @@
-package com.lance.realtimeobjectrecognition.classifiers.impl
+package com.lance.realtimeobjectrecognition.label_classifiers.impl
 
 import android.graphics.Bitmap
 import android.util.Log
 import com.google.firebase.ml.vision.common.FirebaseVisionImage
 import com.google.firebase.ml.vision.label.FirebaseVisionImageLabeler
-import com.lance.realtimeobjectrecognition.classifiers.Classifier
-import com.lance.realtimeobjectrecognition.utils.convertByteArrayToBitmap
+import com.lance.realtimeobjectrecognition.label_classifiers.LabelClassifier
 import io.reactivex.Observable
 import java.lang.Exception
 
-class MLKitClassifier(val labeler: FirebaseVisionImageLabeler):
-    Classifier {
+class MLKitLabelClassifier(val labeler: FirebaseVisionImageLabeler):
+    LabelClassifier {
 
     /**
      * Processes bitmap image using given [labeler]. As a result, produces

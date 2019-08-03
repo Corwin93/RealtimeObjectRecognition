@@ -21,25 +21,24 @@ import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import com.google.firebase.ml.vision.FirebaseVision
 import com.lance.realtimeobjectrecognition.R
-import com.lance.realtimeobjectrecognition.classifiers.impl.MLKitClassifier
-import com.lance.realtimeobjectrecognition.classifiers.impl.TensorFlowClassifier
+import com.lance.realtimeobjectrecognition.label_classifiers.impl.MLKitLabelClassifier
+import com.lance.realtimeobjectrecognition.label_classifiers.impl.TensorFlowLabelClassifier
 import com.lance.realtimeobjectrecognition.utils.convertByteArrayToBitmap
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.PublishSubject
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_labeler.*
 import java.io.IOException
 import java.util.*
 import java.util.concurrent.TimeUnit
-import com.lance.realtimeobjectrecognition.classifiers.Classifier as Classifier1
 
 
-class MainActivity : AppCompatActivity() {
+class LabelerActivity : AppCompatActivity() {
 
     companion object {
-        val TAG = "MainActivity"
+        val TAG = "LabelerActivity"
         val CAMERA_PERMISSION_REQUEST = 0
         val CAMERA_PERMISSION_REQUEST_FROM_SETTINGS = 1
     }
@@ -54,7 +53,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_labeler)
         textToSpeech = TextToSpeech(applicationContext, TextToSpeech.OnInitListener {
             if (it == TextToSpeech.SUCCESS) {
                 textToSpeech.language = Locale.US
@@ -83,7 +82,7 @@ class MainActivity : AppCompatActivity() {
         } else {
             FirebaseVision.getInstance().cloudImageLabeler
         }
-        val classifier = MLKitClassifier(labeler)
+        val classifier = MLKitLabelClassifier(labeler)
         return publisher
             .throttleLast(2000, TimeUnit.MILLISECONDS)  //frames are throttled not to overload CPU and RAM
             .subscribeOn(Schedulers.computation())
@@ -135,7 +134,7 @@ class MainActivity : AppCompatActivity() {
         val labelPath = "labels.txt"
         val inputSize = 224
         val quant = true
-        val classifier = TensorFlowClassifier(applicationContext.assets, modelPath, labelPath, inputSize, quant)
+        val classifier = TensorFlowLabelClassifier(applicationContext.assets, modelPath, labelPath, inputSize, quant)
         return publisher
             .throttleLast(2000, TimeUnit.MILLISECONDS)  //frames are throttled not to overload CPU and RAM
             .subscribeOn(Schedulers.computation())

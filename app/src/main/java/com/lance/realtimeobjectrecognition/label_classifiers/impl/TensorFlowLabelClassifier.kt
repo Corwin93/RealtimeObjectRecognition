@@ -1,8 +1,8 @@
-package com.lance.realtimeobjectrecognition.classifiers.impl
+package com.lance.realtimeobjectrecognition.label_classifiers.impl
 
 import android.content.res.AssetManager
 import android.graphics.Bitmap
-import com.lance.realtimeobjectrecognition.classifiers.Classifier
+import com.lance.realtimeobjectrecognition.label_classifiers.LabelClassifier
 import io.reactivex.Observable
 import org.tensorflow.lite.Interpreter
 import java.io.BufferedReader
@@ -16,8 +16,8 @@ import java.util.*
 import kotlin.experimental.and
 
 
-class TensorFlowClassifier(val assetManager: AssetManager, val modelPath: String,
-                           val labelPath: String, val inputSize: Int, val quant: Boolean) : Classifier {
+class TensorFlowLabelClassifier(val assetManager: AssetManager, val modelPath: String,
+                                val labelPath: String, val inputSize: Int, val quant: Boolean) : LabelClassifier {
 
 
     companion object {

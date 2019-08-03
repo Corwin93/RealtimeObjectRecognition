@@ -1,8 +1,8 @@
-package com.lance.realtimeobjectrecognition.classifiers
+package com.lance.realtimeobjectrecognition.label_classifiers
 
 import android.graphics.Bitmap
 import io.reactivex.Observable
 
-interface Classifier {
+interface LabelClassifier {
     fun classifyObjects(image: Bitmap): Observable<Pair<String, Float>>
 }

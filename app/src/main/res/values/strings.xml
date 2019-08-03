@@ -3,4 +3,9 @@
     <string name="camera_rationale">Camera permission is necessary for object recognition.</string>
     <string name="camera_never_ask_again_warning">You denied camera permission.</string>
     <string name="camera_permission_settings_instruction">Open Permissions and grant the Camera permission</string>
+    <string name="start_tf_detector_label">TensorFlow Detector</string>
+    <string name="start_mlkit_labeler_label">MLKit Labeler</string>
+    <string name="description_info">Info</string>
+    <string name="request_permission">This sample needs camera permission.</string>
+    <string name="camera_error">This device doesn\'t support Camera2 API.</string>
 </resources>
